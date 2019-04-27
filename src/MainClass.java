@@ -54,6 +54,7 @@ public class MainClass {
         isDayOk(9);
         isDayOk(19);
         isDayOk(27);
+        isDayOk(35);
     }
 
     public static void isDayOk(int x) {
