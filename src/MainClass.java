@@ -1,94 +1,75 @@
 public class MainClass {
-    public static void main(String[] args) {
-//        System.out.println("Hello\nworld!");
-//        System.out.println("5 + 7 = " + (5 + 7));
-//        System.out.println('G');
+    public static void main(String[] args)
+    {
+        byte aa1 = 127;
+        short aa2 = 9999;
+        int aa3 = 999999999;
+        long aa4 = 9999999999999L;
+        float aa5 = 9.999999f;
+        double aa6 = 9.9999999999999;
+        char aa7 = 'G';
+        boolean aa8 = 2>8;
+        String aa9 = "Hello World!";
 
-//        int a = 5;
-//        int c = a + b;
-//
-//        byte b = 127;
-//        b++;
-//        System.out.println(b);
-
-//        int b = 10;
-//        b = 10/4;
-//        System.out.println(b);
-
-//        long f = 123456789012L;
-
-//        float a = 1.12345678912345f;
-//        double b = 1.12345678912345;
-//        System.out.println(a);
-//        System.out.println(b);
-
-//        char c = '4';
-//        System.out.println(c);
-
-//        boolean b = 2<8;
-//        System.out.println(b);
-
-//        int a = 23;
-//        System.out.println(a++);
-//        System.out.println(++a);
-
-//        a += 5;
-//        System.out.println(a);
-
-//        float a = 10.0f;
-//        float b = 4.0f;
-//        float c = a/b;
-//        System.out.println(c);
-
-//        printHello("Vasya");
-//        printHello("Petya");
-//        printHello("Katya");
-//        printHello();
-
-//        printSumm(2,3,4);
-//        System.out.println(summ(1,2,3));
-
-//        isGoal(3, 9, 1);
-//        isGoal(3, 19, 10);
-
-        isDayOk(9);
-        isDayOk(19);
-        isDayOk(27);
-        isDayOk(35);
+        task3(5,2,3,4);
+        task4(5,10);
+        task4(15,15);
+        task5(5);
+        task5(-5);
+        task6(5);
+        task6(-5);
+        task7("Иван");
+        task8(2019);
+        task8(2020);
+        task8(100);
+        task8(300);
+        task8(400);
+        task8(800);
     }
 
-    public static void isDayOk(int x) {
-        if ( ((x >= 7) && (x <= 10)) || ((x >= 17) && (x <= 22)) ) {
-            System.out.println("Ok");
+    public static void task3 (float a, float b, float c, float d)
+    {
+        System.out.println (a * (b + (c / d)));
+    }
+
+    public static void task4 (int a, int b)
+    {
+        int c = a+b;
+        boolean d = (c >= 10) && (c <= 20);
+        System.out.println(d);
+    }
+
+    public static void task5 (int a)
+    {
+        if (a >=0) {
+            System.out.println("Положительное число");
         } else {
-            System.out.println("No");
+            System.out.println("Отрицательное число");
         }
     }
 
-    public static void isGoal(double a, double b, double x) {
-        if ((a < x) && (x < b)) {
-            System.out.println("Goal");
+    public static void task6 (int a)
+    {
+        boolean d = a < 0;
+        System.out.println(d);
+    }
+
+    public static void task7 (String username)
+    {
+        System.out.println("Привет, " + username + "!");
+    }
+
+    public static void task8 (int year)
+    {
+        int x4 = year%4;
+        int x100 = year%100;
+        int x400 = year%400;
+
+        if ((x400==0) || ((x4==0) && (x100 != 0)))
+        {
+            System.out.println(year + " - високосный год");
         } else {
-            System.out.println("No");
+            System.out.println(year + " - это обычный год");
         }
     }
-
-    public static void printHello(String name) {
-        System.out.println("============");
-        System.out.println("Hello " + name);
-        System.out.println("============");
-    }
-
-    public static void printHello() {
-        System.out.println("Hello World!");
-    }
-
-    public static double summ(double a, double b, double c) {
-        return a + b / c;
-    }
-
-    public static void printSumm(double a, double b, double c) {
-        System.out.println(a + b / c);
-    }
-
 }
