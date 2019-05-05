@@ -1,3 +1,7 @@
+package lesson1;
+
+import java.util.Arrays;
+
 public class MainClass {
     public static void main(String[] args)
     {
@@ -11,9 +15,9 @@ public class MainClass {
         boolean aa8 = 2>8;
         String aa9 = "Hello World!";
 //
-        task3(5,2,3,4);
-        task4(5,10);
-        task4(15,15);
+        System.out.println(task3(5,2,3,4));
+        System.out.println(task4(5,10));
+        System.out.println(task4(15,15));
         task5(5);
         task5(-5);
         task6(5);
@@ -27,16 +31,21 @@ public class MainClass {
         task8(800);
     }
 
-    public static void task3 (float a, float b, float c, float d)
+    public static void test (int[] arr)
     {
-        System.out.println (a * (b + (c / d)));
+        System.out.println(Arrays.toString(arr));
     }
 
-    public static void task4 (int a, int b)
+    public static double task3 (double a, double b, double c, double d)
+    {
+        return (a * (b + (c / d)));
+    }
+
+    public static boolean task4 (int a, int b)
     {
         int c = a+b;
         boolean d = (c >= 10) && (c <= 20);
-        System.out.println(d);
+        return d;
     }
 
     public static void task5 (int a)
