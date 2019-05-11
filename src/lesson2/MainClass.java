@@ -79,7 +79,7 @@ public class MainClass {
         int[] task7 = { 4, 2, 1, 7, 9 };
         System.out.println(Arrays.toString(task7) + " — исходный");
         moveArray(task7, 16);
-        
+
 
     }
 
