@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class TicTacToe
 {
     public static char[][] map;
-    public static final int SIZE = 3;
-    public static final int DOTS_TO_WIN = 3;
+    public static final int SIZE = 5;
+    public static final int DOTS_TO_WIN = 4;
     public static final char DOT_EMPTY = '.';
     public static final char DOT_X = 'X';
     public static final char DOT_O = 'O';
@@ -98,12 +98,34 @@ public class TicTacToe
 
     public static void aiTurn()
     {
-        int x, y;
-        do
+        int x = -1, y = -1;
+
+        for (int i = 0; i < SIZE; i++)
         {
-            x = rand.nextInt(SIZE);
-            y = rand.nextInt(SIZE);
-        } while (!isCellValid(x, y));
+            for (int j = 0; j < SIZE; j++)
+            {
+                if (isCellValid(j, i))
+                {
+                    map[i][j] = DOT_X;
+                    if (checkWin(DOT_X))
+                    {
+                        x = j;
+                        y = i;
+                    }
+                    map[i][j] = DOT_EMPTY;
+                }
+
+            }
+
+        }
+        if (x == -1 && y == -1)
+        {
+            do
+            {
+                x = rand.nextInt(SIZE);
+                y = rand.nextInt(SIZE);
+            } while (!isCellValid(y, x));
+        }
 
         System.out.println("Компьютер походил в точку " + (x + 1) + " " + (y + 1));
         map[y][x] = DOT_O;
@@ -142,14 +164,10 @@ public class TicTacToe
         {
             for (int x = 0; x < SIZE; x++)
             {
-                if (isLineOnMap1(x,y) && isLineWin1(x,y,symb)) return true;
-                if (isLineOnMap2(x,y) && isLineWin2(x,y,symb)) return true;
-                if (isLineOnMap3(x,y) && isLineWin3(x,y,symb)) return true;
-                if (isLineOnMap4(x,y) && isLineWin4(x,y,symb)) return true;
-                if (isLineOnMap5(x,y) && isLineWin5(x,y,symb)) return true;
-                if (isLineOnMap6(x,y) && isLineWin6(x,y,symb)) return true;
-                if (isLineOnMap7(x,y) && isLineWin7(x,y,symb)) return true;
-                if (isLineOnMap8(x,y) && isLineWin8(x,y,symb)) return true;
+                if (isLineOnMap1(x, y) && isLineWin1(x, y, symb)) return true;
+                if (isLineOnMap2(x, y) && isLineWin2(x, y, symb)) return true;
+                if (isLineOnMap3(x, y) && isLineWin3(x, y, symb)) return true;
+                if (isLineOnMap4(x, y) && isLineWin4(x, y, symb)) return true;
             }
         }
         return false;
@@ -159,7 +177,7 @@ public class TicTacToe
     {
         for (int i = 0; i < DOTS_TO_WIN; i++)
         {
-            if (!isOnMap(x+i, y)) return false;
+            if (!isOnMap(x + i, y)) return false;
         }
         return true;
     }
@@ -168,7 +186,7 @@ public class TicTacToe
     {
         for (int i = 0; i < DOTS_TO_WIN; i++)
         {
-            if (map[x+i][y] != symb) return false;
+            if (map[x + i][y] != symb) return false;
         }
         return true;
     }
@@ -177,7 +195,7 @@ public class TicTacToe
     {
         for (int i = 0; i < DOTS_TO_WIN; i++)
         {
-            if (!isOnMap(x+i, y+i)) return false;
+            if (!isOnMap(x + i, y + i)) return false;
         }
         return true;
     }
@@ -186,7 +204,7 @@ public class TicTacToe
     {
         for (int i = 0; i < DOTS_TO_WIN; i++)
         {
-            if (map[x+i][y+i] != symb) return false;
+            if (map[x + i][y + i] != symb) return false;
         }
         return true;
     }
@@ -195,7 +213,7 @@ public class TicTacToe
     {
         for (int i = 0; i < DOTS_TO_WIN; i++)
         {
-            if (!isOnMap(x, y+i)) return false;
+            if (!isOnMap(x, y + i)) return false;
         }
         return true;
     }
@@ -204,7 +222,7 @@ public class TicTacToe
     {
         for (int i = 0; i < DOTS_TO_WIN; i++)
         {
-            if (map[x][y+i] != symb) return false;
+            if (map[x][y + i] != symb) return false;
         }
         return true;
     }
@@ -213,7 +231,7 @@ public class TicTacToe
     {
         for (int i = 0; i < DOTS_TO_WIN; i++)
         {
-            if (!isOnMap(x-i, y+i)) return false;
+            if (!isOnMap(x + i, y - i)) return false;
         }
         return true;
     }
@@ -222,79 +240,7 @@ public class TicTacToe
     {
         for (int i = 0; i < DOTS_TO_WIN; i++)
         {
-            if (map[x-i][y+i] != symb) return false;
-        }
-        return true;
-    }
-
-    public static boolean isLineOnMap5(int x, int y)
-    {
-        for (int i = 0; i < DOTS_TO_WIN; i++)
-        {
-            if (!isOnMap(x-i, y)) return false;
-        }
-        return true;
-    }
-
-    public static boolean isLineWin5(int x, int y, char symb)
-    {
-        for (int i = 0; i < DOTS_TO_WIN; i++)
-        {
-            if (map[x-i][y] != symb) return false;
-        }
-        return true;
-    }
-
-    public static boolean isLineOnMap6(int x, int y)
-    {
-        for (int i = 0; i < DOTS_TO_WIN; i++)
-        {
-            if (!isOnMap(x-i, y-i)) return false;
-        }
-        return true;
-    }
-
-    public static boolean isLineWin6(int x, int y, char symb)
-    {
-        for (int i = 0; i < DOTS_TO_WIN; i++)
-        {
-            if (map[x-i][y-i] != symb) return false;
-        }
-        return true;
-    }
-
-    public static boolean isLineOnMap7(int x, int y)
-    {
-        for (int i = 0; i < DOTS_TO_WIN; i++)
-        {
-            if (!isOnMap(x, y-i)) return false;
-        }
-        return true;
-    }
-
-    public static boolean isLineWin7(int x, int y, char symb)
-    {
-        for (int i = 0; i < DOTS_TO_WIN; i++)
-        {
-            if (map[x][y-i] != symb) return false;
-        }
-        return true;
-    }
-
-    public static boolean isLineOnMap8(int x, int y)
-    {
-        for (int i = 0; i < DOTS_TO_WIN; i++)
-        {
-            if (!isOnMap(x+i, y-i)) return false;
-        }
-        return true;
-    }
-
-    public static boolean isLineWin8(int x, int y, char symb)
-    {
-        for (int i = 0; i < DOTS_TO_WIN; i++)
-        {
-            if (map[x+i][y-i] != symb) return false;
+            if (map[x + i][y - i] != symb) return false;
         }
         return true;
     }
