@@ -11,11 +11,19 @@ public class Lesson5
         employeesArr[3] = new Employee("Gladys Scott", "UI Designer", "gladys.scott99@example.com", "9279971283", 60000, 34);
         employeesArr[4] = new Employee("Alex Douglas", "iOS Developer", "alex.douglas48@example.com", "1603971074", 70000, 42);
 
-        for (int i = 0; i < employeesArr.length; i++)
+//        for (int i = 0; i < employeesArr.length; i++)
+//        {
+//            if (employeesArr[i].getAge() >= 40)
+//            {
+//                employeesArr[i].printEmployeeInfo();
+//            }
+//        }
+
+        for (Employee i : employeesArr)
         {
-            if (employeesArr[i].getAge() >= 40)
+            if (i.getAge() >= 40)
             {
-                employeesArr[i].printEmployeeInfo();
+                i.printEmployeeInfo();
             }
         }
     }
