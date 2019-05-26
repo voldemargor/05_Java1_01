@@ -4,12 +4,13 @@ import java.util.Random;
 
 public class Animal
 {
+    String type;
     String name;
-    public int runLimit;
+
+    int runLimit;
     int swimLimit;
     float jumpLimit;
     Random rand = new Random();
-    static int animalsCounter = 0;
 
     public Animal(String name)
     {
@@ -18,21 +19,39 @@ public class Animal
 
     public void run(int length)
     {
-        System.out.print(name + " run " + length + "m ..... ");
+        if (length <= runLimit)
+        {
+            System.out.println(type + " " + name + " успешно пробежал " + length + "м");
+        } else
+        {
+            System.out.println(type + " " + name + "столько бежать не может");
+        }
     }
 
-    public void swim(int length)
+    public void swim (int length)
     {
-        System.out.print(name + " swim " + length + "m ..... ");
+        if (swimLimit == 0) {
+            System.out.println(type + " " + name + " не умеет плавать");
+            return;
+        }
+        if (length <= swimLimit)
+        {
+            System.out.println(type + " " + name + " успешно проплыл " + length + "м");
+        } else
+        {
+            System.out.println(type + " " + name + "столько плыть не может");
+        }
     }
 
-    public void jump(int height)
+    public void jump (int height)
     {
-        System.out.print(name + " jump " + height + "m ..... ");
+        if (height <= jumpLimit)
+        {
+            System.out.println(type + " " + name + " успешно проплыл " + height + "м");
+        } else
+        {
+            System.out.println(type + " " + name + "столько плыть не может");
+        }
     }
 
-    public int getAnimalsCounter()
-    {
-        return animalsCounter;
-    }
 }
