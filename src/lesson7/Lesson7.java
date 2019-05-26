@@ -18,11 +18,12 @@ public class Lesson7
             while (!x.isCatFull)
             {
                 x.eat(plate1);
-                if (x.isCatFull){
-                    System.out.println(x.getName() + " сыт");
-                }
             }
         }
 
+        for (Cat x : cats)
+        {
+            x.eat(plate1);
+        }
     }
 }
