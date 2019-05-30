@@ -61,6 +61,9 @@ public class GameWindow extends JFrame
         add(gameField, BorderLayout.CENTER);
 
         setVisible(true);
+
+        // Вызов настроек новой игры
+        windowNewGameSettings.setVisible(true);
     }
 
     public void startNewGame(int mode, int fieldSizeX, int fieldSizeY, int winningLength)
